@@ -1,7 +1,6 @@
 # Makefile for compiling PRD article
 
-filename = main.tex
-bibname = reference.bib
+filename = main
 
 TEXFILES = *tex
 BBLFILES = *bbl
@@ -12,8 +11,11 @@ LATEXMK=latexmk
 
 all: main.pdf
 
-main.pdf: ${filename} ${bibname}
-	$(LATEXMK) ${filename}
+bib:
+	adstex main.tex -o references.bib
+
+main.pdf: bib
+	$(LATEXMK) -pdf ${filename}
 
 gitID.txt:
 	git describe --abbrev=8 --dirty --always --tags > gitID.txt
