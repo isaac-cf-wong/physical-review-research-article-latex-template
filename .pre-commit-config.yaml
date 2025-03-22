@@ -1,0 +1,36 @@
+ci:
+  autoupdate_commit_msg: "chore: update pre-commit hooks"
+  autofix_commit_msg: "style: pre-commit fixes"
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.1
+    hooks:
+      - id: codespell
+        args: [
+            "--ignore-words-list=nd,te",
+            "--ignore-words=.ignore_words.txt",
+            "*.tex **/*.tex **/**/*.tex",
+          ] # Ignore common LaTeX abbreviations
+
+  - repo: https://github.com/cmhughes/latexindent.pl
+    rev: V3.24.5
+    hooks:
+      - id: latexindent
+
+  - repo: https://github.com/ambv/black
+    rev: 25.1.0
+    hooks:
+      - id: black
+        language_version: python3 # Only needed if repo contains Python scripts for automation
