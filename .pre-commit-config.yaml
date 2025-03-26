@@ -21,8 +21,8 @@ repos:
         args: [
             "--ignore-words-list=nd,te",
             "--ignore-words=.ignore_words.txt",
-            "*.tex **/*.tex **/**/*.tex",
           ] # Ignore common LaTeX abbreviations
+        files: "\\.tex$"
 
   - repo: https://github.com/cmhughes/latexindent.pl
     rev: V3.24.5
