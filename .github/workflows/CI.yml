@@ -1,4 +1,4 @@
-ame: LaTeX CI
+name: LaTeX CI
 on:
   push:
     branches: [main]
