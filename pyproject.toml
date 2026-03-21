@@ -3,7 +3,7 @@ requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
-name = "template-repository"
+name = "physical-review-research-article-latex-template"
 description = "A paper repository of a physical review research article."
 readme = "README.md"
 dependencies = ["pre-commit>=4.5.1"]
@@ -13,7 +13,7 @@ dynamic = ["version"]
 source = "vcs"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/template_repository"]
+packages = ["src/physical_review_research_article_latex_template"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
@@ -24,7 +24,7 @@ fast = true
 
 [tool.ruff]
 line-length = 120 # Matches Black's default
-target-version = "py39"
+target-version = "py312"
 lint.extend-select = [
   "E",
   "F",
