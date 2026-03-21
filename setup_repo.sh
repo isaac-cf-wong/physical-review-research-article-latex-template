@@ -35,7 +35,7 @@ else
 fi
 
 find . -type d \( -name ".git" -o -name "__pycache__" -o -name ".venv" -o -name "node_modules" -o -name ".pytest_cache" \) -prune \
-    -o -type f \( -name "*.py" -o -name "*.md" -o -name "*.toml" \) \
+    -o -type f \( -name "*.py" -o -name "*.md" -o -name "*.toml" -o -name "LICENSE" \) \
     -exec sed "${SED_INPLACE[@]}" -e "s/$OLD_REPO_NAME/$NEW_REPO_NAME/g" -e "s/$OLD_REPO_NAME_NORMALIZED/$NEW_REPO_NAME_NORMALIZED/g" {} +
 
 mv "src/$OLD_REPO_NAME_NORMALIZED" "src/$NEW_REPO_NAME_NORMALIZED"
