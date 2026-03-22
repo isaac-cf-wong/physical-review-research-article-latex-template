@@ -2,3 +2,4 @@ READMD
 revtex
 pdflatex
 latexmk
+includegraphics
