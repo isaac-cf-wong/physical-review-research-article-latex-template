@@ -2,9 +2,6 @@
 
 filename = main
 
-SRC_DIR = .
-CLEANED_DIR = $(shell realpath $(SRC_DIR))_arXiv
-
 TEXFILES = *tex
 BBLFILES = *bbl
 PDFFILES = *pdf
@@ -15,10 +12,7 @@ LATEXMK=latexmk
 
 all: main.pdf
 
-bib:
-	adstex main.tex -o references.bib
-
-main.pdf: bib
+main.pdf:
 	$(LATEXMK) -pdf ${filename}
 
 gitID.txt:
@@ -28,7 +22,3 @@ gitID.txt:
 clean:
 	@echo "Cleaning auxiliary and output files..."
 	rm -f *.pdf *.aux *.bbl *.blg *.log *.toc *.out *.fdb* *.fls gitID.txt
-
-clean_arxiv: main.pdf
-	@echo "Cleaning LaTeX source for arXiv submission..."
-	arxiv_latex_cleaner $(SRC_DIR)
