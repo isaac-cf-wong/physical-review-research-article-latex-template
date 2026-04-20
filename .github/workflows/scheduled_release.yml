@@ -1,4 +1,4 @@
-name: Create Tag
+name: Scheduled Release
 
 on:
     schedule:
@@ -9,16 +9,9 @@ permissions:
     contents: write
 
 jobs:
-    ci:
-        uses: ./.github/workflows/ci.yml
-        permissions:
-            security-events: write
-
-    create_tag:
-        needs: ci
+    check_new_commits:
         runs-on: ubuntu-latest
         outputs:
-            new_tag: ${{ steps.tag_version.outputs.new_tag }}
             has-changes: ${{ steps.check_commits.outputs.has-changes }}
         steps:
             - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
@@ -28,9 +21,26 @@ jobs:
             - name: Check for new commits
               id: check_commits
               uses: isaac-cf-wong/detect-git-changes-action@70fcae05eb715fa668b065d838defbff01cc17e1 # v0.0.8
+              with:
+                  use-latest-tag: 'true'
+
+    ci:
+        needs: check_new_commits
+        uses: ./.github/workflows/ci.yml
+        permissions:
+            security-events: write
+
+    create_tag:
+        needs: ci
+        runs-on: ubuntu-latest
+        outputs:
+            new_tag: ${{ steps.tag_version.outputs.new_tag }}
+        steps:
+            - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+              with:
+                  fetch-depth: 0
 
             - name: Bump version and push tag
-              if: steps.check_commits.outputs.has-changes == 'true'
               id: tag_version
               uses: mathieudutour/github-tag-action@a22cf08638b34d5badda920f9daf6e72c477b07b # v6.2
               with:
@@ -49,7 +59,6 @@ jobs:
 
     release:
         needs: create_tag
-        if: needs.create_tag.outputs.has-changes == 'true'
         uses: ./.github/workflows/release.yml
         permissions:
             contents: write
