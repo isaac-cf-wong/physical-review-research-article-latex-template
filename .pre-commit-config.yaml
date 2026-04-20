@@ -16,26 +16,12 @@ repos:
           - id: ruff
             args: [--fix, --config=pyproject.toml]
 
-    - repo: https://github.com/streetsidesoftware/cspell-cli
-      rev: v9.7.0 # Keep this version or update to the latest stable
+    - repo: https://github.com/crate-ci/typos
+      rev: v1.45.0
       hooks:
-          - id: cspell
-            name: Check spelling in Python, reSt, and Markdown files.
-            args: ['--config', 'cspell.json']
-            files: ^.*\.(py|rst|md)$
-            stages: [pre-commit]
-          - id: cspell
-            name: Check commit message spelling.
-            args:
-                - --config
-                - cspell.json
-                - --no-must-find-files
-                - --no-progress
-                - --no-summary
-                - --files
-                - .git/COMMIT_EDITMSG
-            stages: [commit-msg]
-            always_run: true
+          - id: typos
+            args: []
+            exclude: ^\.gitignore$
 
     - repo: https://github.com/cmhughes/latexindent.pl
       rev: V3.24.5
@@ -46,13 +32,11 @@ repos:
       rev: v3.8.1
       hooks:
           - id: prettier
-            stages: [pre-commit]
 
     - repo: https://github.com/DavidAnson/markdownlint-cli2
       rev: v0.21.0
       hooks:
           - id: markdownlint-cli2
-            stages: [pre-commit]
             args:
                 - --config
                 - .markdownlint.yaml
