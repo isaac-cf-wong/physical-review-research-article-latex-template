@@ -1,7 +1,6 @@
 [files]
-extend-exclude = [
-  ".gitignore"
-]
+ignore-dot = true
+ignore-files = true
 
 [default]
 extend-ignore-re = [
