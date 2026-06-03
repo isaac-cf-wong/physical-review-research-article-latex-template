@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "physical-review-research-article-latex-template"
 description = "A paper repository of a physical review research article."
 readme = "README.md"
-dependencies = ["pre-commit>=4.6.0"]
+dependencies = ["prek>=0.4.3"]
 dynamic = ["version"]
 
 [tool.hatch.version]
