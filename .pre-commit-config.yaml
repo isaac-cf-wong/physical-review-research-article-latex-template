@@ -41,6 +41,12 @@ repos:
                 - --config
                 - .markdownlint.yaml
 
+    - repo: https://github.com/isaac-cf-wong/bibsync
+      rev: v0.3.4
+      hooks:
+          - id: bibsync-bin
+            args: [--fix, --cache, --provider, ads, --output, references.bib]
+
     - repo: https://github.com/astral-sh/uv-pre-commit
       rev: 0.10.6
       hooks:
