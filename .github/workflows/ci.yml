@@ -17,6 +17,8 @@ jobs:
               with:
                   python-version: 3.14
                   enable-cache: 'true'
+            - name: Run pre-commit
+              shell: bash
               env:
                   ADS_API_TOKEN: ${{ secrets.ADS_API_TOKEN }}
               run: uv run prek run --all-files
