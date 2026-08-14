@@ -30,6 +30,11 @@ dev = ["prek>=0.4.13"]
 [tool.hatch.metadata]
 allow-direct-references = true
 
+[tool.dependency-support-policy]
+policy = "spec0"
+groups = ["project"]
+lock = "minimal"
+
 [tool.black]
 line-length = 120
 fast = true
