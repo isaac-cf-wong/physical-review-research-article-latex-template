@@ -6,7 +6,16 @@ build-backend = "hatchling.build"
 name = "physical-review-research-article-latex-template"
 description = "A paper repository of a physical review research article."
 readme = "README.md"
-dependencies = ["prek>=0.4.3"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: BSD License",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+]
+requires-python = ">=3.12"
 dynamic = ["version"]
 
 [tool.hatch.version]
@@ -14,6 +23,9 @@ source = "vcs"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/physical_review_research_article_latex_template"]
+
+[dependency-groups]
+dev = ["prek>=0.4.13"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
