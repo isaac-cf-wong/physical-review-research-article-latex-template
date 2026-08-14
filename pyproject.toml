@@ -16,7 +16,6 @@ classifiers = [
   "Programming Language :: Python :: 3.14",
 ]
 requires-python = ">=3.12"
-dependencies = ["prek>=0.4.13"]
 dynamic = ["version"]
 
 [tool.hatch.version]
@@ -24,6 +23,9 @@ source = "vcs"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/physical_review_research_article_latex_template"]
+
+[dependency-groups]
+dev = ["prek>=0.4.13"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
