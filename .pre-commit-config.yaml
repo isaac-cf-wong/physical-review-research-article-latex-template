@@ -47,6 +47,11 @@ repos:
           - id: bibsync-bin
             args: [--fix, --cache, --provider, ads, --output, references.bib]
 
+    - repo: https://github.com/rhysd/actionlint
+      rev: v1.7.12
+      hooks:
+          - id: actionlint
+
     - repo: https://github.com/astral-sh/uv-pre-commit
       rev: 0.12.4
       hooks:
