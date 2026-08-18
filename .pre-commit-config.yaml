@@ -42,7 +42,7 @@ repos:
                 - .markdownlint.yaml
 
     - repo: https://github.com/isaac-cf-wong/bibsync
-      rev: v0.4.8
+      rev: v0.4.9
       hooks:
           - id: bibsync-bin
             args: [--fix, --cache, --provider, ads, --output, references.bib]
