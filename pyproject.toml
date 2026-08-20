@@ -25,7 +25,7 @@ source = "vcs"
 packages = ["src/physical_review_research_article_latex_template"]
 
 [dependency-groups]
-dev = ["prek>=0.4.13"]
+dev = ["prek>=0.4.14"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
