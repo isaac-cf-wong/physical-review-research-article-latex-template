@@ -14,7 +14,7 @@ dev = [
 [package.metadata]
 
 [package.metadata.requires-dev]
-dev = [{ name = "prek", specifier = ">=0.5.1" }]
+dev = [{ name = "prek", specifier = ">=0.5.2" }]
 
 [[package]]
 name = "prek"
